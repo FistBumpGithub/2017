@@ -42,12 +42,12 @@ CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
 static CBigNum bnProofOfStakeLimitTestNet(~uint256(0) >> 16);
 
 unsigned int nWorkTargetSpacing = 10 * 60; // 10 minutes per block
-unsigned int nStakeTargetSpacing = 10 * 60; // 10 Minutes per block
+unsigned int nStakeTargetSpacing = 5 * 60; // 5 Minutes per block
 unsigned int nStakeMinAge = 1 * 60 * 60; // 1 hour
 unsigned int nStakeMaxAge = -1; // unlimited
-unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
+unsigned int nModifierInterval = 5 * 60; // time to elapse before new modifier is computed
 
-int nCoinbaseMaturity = 144;   // 144 Blocks ~24 Hours
+int nCoinbaseMaturity = 5;   // 5 Blocks 50 Minutes
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 
@@ -977,7 +977,7 @@ int64_t GetProofOfWorkReward(int64_t nFees)
         return nSubsidy + nFees;
       }
       
-    else if (pindexBest->nHeight <= 144)
+    else if (pindexBest->nHeight <= 288)
       {
         int64_t nSubsidy = 0 * COIN;     //just to avoid instamining
         return nSubsidy + nFees;
@@ -1016,7 +1016,7 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
 		return nSubsidy + nFees; 
     }
 
-    else if(pindexBest->nHeight < 144)
+    else if(pindexBest->nHeight < 288)
     {
         nSubsidy = 0 * COIN; 
 		return nSubsidy + nFees; 
@@ -1041,7 +1041,7 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
     return nSubsidy + nFees;
 }
 
-static const int64_t nTargetTimespan = 20 * 60;  // Retarget Difficulty every 20 minutes
+static const int64_t nTargetTimespan = 5 * 60;  // Retarget Difficulty every 20 minutes
 
 //
 // maximum nBits value could possible be required nTime after
