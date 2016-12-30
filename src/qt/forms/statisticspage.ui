@@ -230,7 +230,7 @@ font-family:'Open Sans,sans-serif';</string>
            <string notr="true">color: rgb(0, 0, 255);</string>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color: rgb(0, 0, 0);;&quot;&gt;TOTAL CGN:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color: rgb(0, 0, 0);;&quot;&gt;TOTAL 2017:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>

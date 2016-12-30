@@ -133,9 +133,9 @@ void StatisticsPage::updateStatistics()
 
     if(volume > volumePrevious)
     {
-        ui->volumeBox->setText("<b><font color=\"green\">" + qVolume + " CGN" + "</font></b>");
+        ui->volumeBox->setText("<b><font color=\"green\">" + qVolume + " 2017" + "</font></b>");
     } else {
-        ui->volumeBox->setText(qVolume + " CGN");
+        ui->volumeBox->setText(qVolume + " 2017");
     }
     updatePrevious(nHeight, nMinWeight, nNetworkWeight, phase, nSubsidy, pHardness, pHardness2, pPawrate2, Qlpawrate, peers, volume);
 }

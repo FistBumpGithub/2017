@@ -265,7 +265,7 @@ void BitcoinGUI::createActions()
     tabGroup->addAction(blockAction);  
   
     chatAction = new QAction(QIcon(":/icons/irc"), tr("&IRC"), this);  
-    chatAction->setToolTip(tr("CGN IRC"));  
+    chatAction->setToolTip(tr("2017 IRC"));  
     chatAction->setCheckable(true);  
     tabGroup->addAction(chatAction);  
 
