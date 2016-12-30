@@ -249,6 +249,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/transactionview.h \
     src/qt/walletmodel.h \
     src/bitcoinrpc.h \
+    src/qt/webviewhandler.h \	
     src/qt/overviewpage.h \
     src/qt/csvmodelwriter.h \
     src/crypter.h \
@@ -281,7 +282,8 @@ HEADERS += src/qt/bitcoingui.h \
     src/sph_fugue.h \
     src/sph_hamsi.h \
     src/sph_types.h \
-    src/clientversion.h\
+    src/clientversion.h \
+    src/qt/merchantpage.h \
     src/qt/blockbrowser.h \
     src/qt/serveur.h \
     src/qt/chatwindow.h \
@@ -336,6 +338,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/rpcwallet.cpp \
     src/rpcblockchain.cpp \
     src/rpcrawtransaction.cpp \
+    src/qt/webviewhandler.cpp \	
     src/qt/overviewpage.cpp \
     src/qt/csvmodelwriter.cpp \
     src/crypter.cpp \
@@ -355,6 +358,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/scrypt-x86_64.S \
     src/scrypt.cpp \
     src/pbkdf2.cpp \
+    src/qt/merchantpage.cpp	\
     src/zerocoin/Accumulator.cpp \
     src/zerocoin/AccumulatorProofOfKnowledge.cpp \
     src/zerocoin/Coin.cpp \
@@ -386,6 +390,7 @@ FORMS += \
     src/qt/forms/askpassphrasedialog.ui \
     src/qt/forms/rpcconsole.ui \
     src/qt/forms/optionsdialog.ui \
+    src/qt/forms/merchants.ui \
     src/qt/forms/blockbrowser.ui \
     src/qt/forms/chatwindow.ui \
     src/qt/forms/statisticspage.ui

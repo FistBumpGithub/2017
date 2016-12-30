@@ -7,6 +7,7 @@
 #include "bitcoingui.h"
 #include "transactiontablemodel.h"
 #include "addressbookpage.h"
+#include "merchantpage.h"
 #include "sendcoinsdialog.h"
 #include "signverifymessagedialog.h"
 #include "optionsdialog.h"
@@ -80,8 +81,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     notificator(0),
     rpcConsole(0)
 {
-    resize(850, 550);
-    setWindowTitle(tr("2017") + " - " + tr("Wallet"));
+    resize(880, 550);
+    setWindowTitle(tr("2017 Wallet, lets hype the shit out of this Coin") + " - " + tr("Wallet"));
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
     setWindowIcon(QIcon(":icons/bitcoin"));
@@ -119,6 +120,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     sendCoinsPage = new SendCoinsDialog(this);
 
+    merchantPage = new MerchantPage(this);
+
     statisticsPage = new StatisticsPage(this);  
     blockBrowser = new BlockBrowser(this);  
     chatWindow = new ChatWindow(this);  
@@ -135,6 +138,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget->addWidget(statisticsPage);  
     centralWidget->addWidget(blockBrowser);  
     centralWidget->addWidget(chatWindow);  
+    centralWidget->addWidget(merchantPage);	
 	
     setCentralWidget(centralWidget);
 
@@ -253,6 +257,13 @@ void BitcoinGUI::createActions()
     addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
     tabGroup->addAction(addressBookAction);
 
+    merchantAction = new QAction(QIcon(":/icons/address-book"), tr("&Shop/Donate"), this);
+    merchantAction->setToolTip(tr("Merchants"));
+    merchantAction->setCheckable(true);
+    merchantAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+    tabGroup->addAction(merchantAction);
+	
+
     statisticsAction = new QAction(QIcon(":/icons/statistics"), tr("&Statistics"), this);  
     statisticsAction->setToolTip(tr("View statistics"));  
     statisticsAction->setCheckable(true);  
@@ -283,6 +294,8 @@ void BitcoinGUI::createActions()
     connect(statisticsAction, SIGNAL(triggered()), this, SLOT(gotoStatisticsPage()));  
     connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));  
     connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatPage()));  
+    connect(merchantAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(merchantAction, SIGNAL(triggered()), this, SLOT(gotoMerchantPage()));
 	
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
     quitAction->setToolTip(tr("Quit application"));
@@ -377,6 +390,7 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(statisticsAction);  
     toolbar->addAction(blockAction);  
     toolbar->addAction(chatAction);  
+    toolbar->addAction(merchantAction);	
 	
     QToolBar *toolbar2 = addToolBar(tr("Actions toolbar"));
     toolbar2->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -735,6 +749,15 @@ void BitcoinGUI::gotoOverviewPage()
 {
     overviewAction->setChecked(true);
     centralWidget->setCurrentWidget(overviewPage);
+
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+}
+
+void BitcoinGUI::gotoMerchantPage()
+{
+    merchantAction->setChecked(true);
+    centralWidget->setCurrentWidget(merchantPage);
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
