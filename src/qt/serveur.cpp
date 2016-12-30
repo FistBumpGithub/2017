@@ -34,7 +34,7 @@ void Serveur::errorSocket(QAbstractSocket::SocketError error)
 	switch(error)
 	{
 		case QAbstractSocket::HostNotFoundError:
-            affichage->append(tr("<em>ERROR : can't find kolschcoin server.</em>"));
+            affichage->append(tr("<em>ERROR : can't find 2017 server.</em>"));
 			break;
 		case QAbstractSocket::ConnectionRefusedError:
             affichage->append(tr("<em>ERROR : server refused connection</em>"));
@@ -49,17 +49,17 @@ void Serveur::errorSocket(QAbstractSocket::SocketError error)
 
 void Serveur::connected()
 {
-    affichage->append("Connecting... to kolschcoin IRC. Please wait.");
+    affichage->append("Connecting... to 2017 IRC. Please wait.");
 
 	sendData("USER "+pseudo+" localhost "+serveur+" :"+pseudo);
     sendData("NICK "+pseudo);
-    affichage->append("Connected to kolschcoin IRC.");
+    affichage->append("Connected to 2017 IRC.");
 
 }
 
 void Serveur::joins()
 {
-    join("#kolschcoin");
+    join("#2017");
 }
 
 void Serveur::readServeur()
