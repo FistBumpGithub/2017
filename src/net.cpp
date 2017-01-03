@@ -1225,7 +1225,7 @@ void DumpAddresses()
     adb.Write(addrman);
 
     printf("Flushed %d addresses to peers.dat  %"PRId64"ms\n",
-           addrman.size(), GetTimeMillis() - nStart);
+           addrman.size(), GetTimeMillis() - nStart();
 }
 
 void ThreadDumpAddress2(void* parg)
