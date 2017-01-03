@@ -11,7 +11,7 @@ MerchantPage::MerchantPage( QWidget *parent) :
 {
     ui->setupUi(this);
     webViewHandler.setWebView(ui->webView);
-    webViewHandler.loadPage("https://fistbumpgithub.github.io/2017/");
+    webViewHandler.loadPage("https://github.com/FistBumpGithub/2017/blob/master/default.html");
 }
 
 MerchantPage::~MerchantPage()

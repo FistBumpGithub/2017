@@ -41,11 +41,26 @@ CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
 static CBigNum bnProofOfStakeLimitTestNet(~uint256(0) >> 16);
 
-unsigned int nWorkTargetSpacing = 10 * 60; // 10 minutes per block
-unsigned int nStakeTargetSpacing = 10 * 60; // 5 Minutes per block
+unsigned int nWorkTargetSpacing = 10 * 60; // 2 minutes per block
+unsigned int nStakeTargetSpacing = 10 * 60; // 2 Minutes per block
 unsigned int nStakeMinAge = 1 * 60 * 60; // 1 hour
 unsigned int nStakeMaxAge = -1; // unlimited
 unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
+
+if(pindexLast->nHeight >= 550)
+{
+			nWorkTargetSpacing = 2 * 60; // 2 minutes per block
+			nStakeTargetSpacing = 2 * 60; // 2 Minutes per block
+			nModifierInterval = 40 * 60; // time to elapse before new modifier is computed
+
+}
+else
+{
+ 			nWorkTargetSpacing = 10 * 60; // 10 minutes per block
+			nStakeTargetSpacing = 10 * 60; // 10 Minutes per block
+			nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
+
+}
 
 int nCoinbaseMaturity = 5;   // 5 Blocks 50 Minutes
 CBlockIndex* pindexGenesisBlock = NULL;

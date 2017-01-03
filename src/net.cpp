@@ -1143,7 +1143,6 @@ static const char *strDNSSeed[][2] = {
 		    	{"Node1", "81.32.218.39"},
 		    	{"Node1", "mineblocks.eu"},
 		    	{"Node1", "theminingpool.mine.nu"},
-				 
 };
 
 void ThreadDNSAddressSeed(void* parg)
