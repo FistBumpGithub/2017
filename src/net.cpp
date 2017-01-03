@@ -1134,7 +1134,16 @@ void MapPort()
 static const char *strDNSSeed[][2] = {
 		    	{"Node1", "2017-coin.ddns.net"},
 		    	{"Node1", "178.202.44.96"},
-		    	{"Node1", "71.87.238.84"},		
+		    	{"Node1", "71.87.238.84"},
+		    	{"Node1", "94.254.73.106},
+		    	{"Node1", "83.39.227.201"},
+		    	{"Node1", "94.23.102.99"},	
+		    	{"Node1", "185.61.151.109"},
+		    	{"Node1", "109.195.134.110"},
+		    	{"Node1", "81.32.218.39"},
+		    	{"Node1", "mineblocks.eu"},
+		    	{"Node1", "theminingpool.mine.nu"},
+				 
 };
 
 void ThreadDNSAddressSeed(void* parg)
