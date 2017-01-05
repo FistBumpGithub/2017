@@ -1113,7 +1113,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     if (pindexPrevPrev->pprev == NULL)
         return bnTargetLimit.GetCompact(); // second block
 
-		 if(pindexLast->nHeight >= 600) 
+		 if(pindexLast->nHeight >= 574) 
 {
 			nWorkTargetSpacing = 1 * 60; // 1 Minute per block   FORK
 			//nWorkTargetSpacingFORK = 1 * 60; // 1 Minute per block   FORK
