@@ -43,9 +43,12 @@ static CBigNum bnProofOfStakeLimitTestNet(~uint256(0) >> 16);
 
 unsigned int nWorkTargetSpacing = 10 * 60; // 10 minutes per block
 unsigned int nStakeTargetSpacing = 10 * 60; // 5 Minutes per block
+unsigned int nWorkTargetSpacingFork = 10 * 60; // 10 minutes per block
+unsigned int nStakeTargetSpacingFork = 10 * 60; // 5 Minutes per block
 unsigned int nStakeMinAge = 1 * 60 * 60; // 1 hour
 unsigned int nStakeMaxAge = -1; // unlimited
 unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
+unsigned int nModifierIntervalFork = 60 * 60; // time to elapse before new modifier is computed
 
 int nCoinbaseMaturity = 5;   // 5 Blocks 50 Minutes
 CBlockIndex* pindexGenesisBlock = NULL;
@@ -982,11 +985,17 @@ int64_t GetProofOfWorkReward(int64_t nFees)
         int64_t nSubsidy = 0 * COIN;     //just to avoid instamining
         return nSubsidy + nFees;
       }
-      
-    else if (pindexBest->nHeight <= 52560)
+
+    else if (pindexBest->nHeight <= 600)
       {
-        int64_t nSubsidy = 0.03837519 * COIN;
+        int64_t nSubsidy = 0.03837519 * COIN;     //just to avoid instamining
         return nSubsidy + nFees;
+      }	
+      
+    else if (pindexBest->nHeight <= 52560)   //
+      {
+        int64_t nSubsidy = 0.00383751 * COIN;   // Reward Reduced by 10  
+        return nSubsidy + nFees;		// Blocks per Day increased by 10 
       }      
       
     else if (pindexBest->nHeight <= 999999)  // oportunity to move the blockchain on a later date
@@ -1030,6 +1039,7 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
 }
 
 static const int64_t nTargetTimespan = 5 * 60;  // Retarget Difficulty every 5 minutes
+static const int64_t nTargetTimespanFork = 60 * 60;  // Retarget Difficulty every 5 minutes
 
 //
 // maximum nBits value could possible be required nTime after
@@ -1093,7 +1103,8 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     }
 
     if (pindexLast == NULL)
-        return bnTargetLimit.GetCompact(); // genesis block
+        return bnTargetLimit.GetCompact(); // 
+	
 
     const CBlockIndex* pindexPrev = GetLastBlockIndex(pindexLast, fProofOfStake);
     if (pindexPrev->pprev == NULL)
@@ -1102,6 +1113,30 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     if (pindexPrevPrev->pprev == NULL)
         return bnTargetLimit.GetCompact(); // second block
 
+		 if(pindexLast->nHeight >= 600) 
+{
+			nWorkTargetSpacing = 1 * 60; // 1 Minute per block   FORK
+			//nWorkTargetSpacingFORK = 1 * 60; // 1 Minute per block   FORK
+			nStakeTargetSpacing = 1 * 60; // 1 Minutes per block FORK
+			//nStakeTargetSpacingFork = 1 * 60; // 1 Minutes per block FORK
+			//nStakeMinAge = 1 * 60 * 60; // 1 hour
+			//nStakeMaxAge = -1; // unlimited
+			//nModifierInterval = 5 * 60; // time to elapse before new modifier is computed
+			//nModifierIntervalFORK = 20 * 60; // time to elapse before new modifier is computed
+
+}
+		 else
+{
+			nWorkTargetSpacing = 10 * 60; // 10 Minute per block   
+			//nWorkTargetSpacing2 = 1 * 60; // 1 Minute per block   FORK
+			nStakeTargetSpacing = 10 * 60; // 10 Minutes per block
+			//nStakeTargetSpacing2 = 1 * 60; // 1 Minutes per block FORK
+			//nStakeMinAge = 1 * 60 * 60; // 1 hour
+			//nStakeMaxAge = -1; // unlimited
+			//nModifierInterval = 5 * 60; // time to elapse before new modifier is computed
+			//nModifierInterval2 = 20 * 60; // time to elapse before new modifier is computed
+}		
+	
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
     if(nActualSpacing < 0)
     {
