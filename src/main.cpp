@@ -992,10 +992,10 @@ int64_t GetProofOfWorkReward(int64_t nFees)
         return nSubsidy + nFees;
       }	
       
-    else if (pindexBest->nHeight <= 52560)   //
+    else if (pindexBest->nHeight <= 525600)   //  
       {
-        int64_t nSubsidy = 0.00383751 * COIN;   // Reward Reduced by 10  
-        return nSubsidy + nFees;		// Blocks per Day increased by 10 
+        int64_t nSubsidy = 0.00383751 * COIN;    // Reward Reduced by 10  
+        return nSubsidy + nFees;		 // Blocks per Day increased by 10 
       }      
       
     else if (pindexBest->nHeight <= 999999)  // oportunity to move the blockchain on a later date
@@ -1025,10 +1025,11 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
 		return nSubsidy + nFees; 
     }
 
-    else if(pindexBest->nHeight < 52560)
+        	
+	else if(pindexBest->nHeight < 525600)
     {
-        nSubsidy = 0.00383751 * COIN; 
-		return nSubsidy + nFees; 
+        nSubsidy = 0.00383751 * COIN;  // Reward Reduced by 10  
+		return nSubsidy + nFees;   // Blocks per Day increased by 10 
     }	
 
 
