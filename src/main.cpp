@@ -1019,17 +1019,24 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
 
   // Reward ~ Payout is not calculated by % per year acording to the coin age...
   // Reward is based on a fixed ammount.
-    if(pindexBest->nHeight < 52560)
+    if(pindexBest->nHeight < 1500)
     {
         nSubsidy = 0.03837519 * COIN; 
 		return nSubsidy + nFees; 
     }
 
+    else if(pindexBest->nHeight < 52560)
+    {
+        nSubsidy = 0.00383751 * COIN; 
+		return nSubsidy + nFees; 
+    }	
+
+
     else if(pindexBest->nHeight < 999999)
     {
         nSubsidy = 0 * COIN; 
 		return nSubsidy + nFees; 
-    }	
+    }		
 
 	
     if (fDebug && GetBoolArg("-printcreation"))
