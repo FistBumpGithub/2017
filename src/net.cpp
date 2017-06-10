@@ -1133,16 +1133,14 @@ void MapPort()
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
 		    	{"Node1", "2017-coin.ddns.net"},
-		    	{"Node1", "178.202.44.96"},
-		    	{"Node1", "71.87.238.84"},
-		    	{"Node1", "94.254.73.106"},
-		    	{"Node1", "83.39.227.201"},
-		    	{"Node1", "94.23.102.99"},	
-		    	{"Node1", "185.61.151.109"},
-		    	{"Node1", "109.195.134.110"},
-		    	{"Node1", "81.32.218.39"},
-		    	{"Node1", "mineblocks.eu"},
-		    	{"Node1", "theminingpool.mine.nu"},
+		    	{"Node2", "185.45.193.24"},
+		    	{"Node3", "185.45.193.21"},
+		    	{"Node4", "185.82.202.164"},
+		    	{"Node5", "185.82.202.159"},
+		    	{"Node6", "185.82.202.160"},	
+		    	{"Node7", "185.82.202.142"},
+		    	{"Node8", "185.82.202.143"},
+
 				 
 };
 
